@@ -4,7 +4,7 @@ import { JobContext } from "../../providers/JobProvider";
 import { useHistory } from "react-router-dom";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
-import "./Customer.css";
+import "./Customer.scss";
 import moment from "moment";
 
 const CustomerJob = ({ job }) => {

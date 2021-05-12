@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { CustomerContext } from "../../providers/CustomerProvider";
 import Customer from "./Customer";
 import { Link } from "react-router-dom";
-import "./Customer.css";
+import "./Customer.scss";
+import { Button } from "reactstrap";
 
 const CustomerList = () => {
   const { customers, getAllCustomers, searchTerms, searchCustomers } =
@@ -21,9 +22,9 @@ const CustomerList = () => {
   }, [searchTerms]);
 
   return (
-    <section className="customers">
+    <section className="container">
       <Link to="/customer/add" className="nav-link">
-        New Customer
+        <Button type="button">Add Job</Button>
       </Link>
       {customers.map((c) => (
         <Customer key={c.id} customer={c} />

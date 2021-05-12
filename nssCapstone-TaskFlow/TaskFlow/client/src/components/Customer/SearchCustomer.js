@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { CustomerContext } from "../../providers/CustomerProvider";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import "./Customer.css";
+import "./Customer.scss";
 
 export const SearchBar = () => {
   const { searchTerm, setSearchTerms } = useContext(CustomerContext);
@@ -11,7 +11,7 @@ export const SearchBar = () => {
   };
 
   return (
-    <div className="App">
+    <div className="searchDiv">
       <Input
         type="text"
         id="searchbar"
@@ -19,6 +19,7 @@ export const SearchBar = () => {
         value={searchTerm}
         onChange={handleChange}
       />
+      <div class="search"></div>
     </div>
   );
 };

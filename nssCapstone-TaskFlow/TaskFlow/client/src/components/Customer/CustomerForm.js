@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { CustomerContext } from "../../providers/CustomerProvider";
-import "./Customer.css";
+import "./Customer.scss";
 
 import { useHistory, useParams } from "react-router-dom";
 

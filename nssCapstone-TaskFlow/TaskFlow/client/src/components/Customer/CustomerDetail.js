@@ -8,7 +8,7 @@ import CustomerJob from "./CustomerJob";
 import { Link } from "react-router-dom";
 import { CardHeader } from "reactstrap";
 import { Button } from "reactstrap";
-import "./Customer.css";
+import "./Customer.scss";
 
 const CustomerDetails = () => {
   const [customer, SetCustomer] = useState({});
@@ -66,6 +66,7 @@ const CustomerDetails = () => {
         <Link to={`/address/add/${customer.id}`}>
           <Button type="button">Add address</Button>
         </Link>
+
         <strong>Addresses:</strong>
         {addresses.map((a) => (
           <CustomerAddress key={a.id} address={a} />
