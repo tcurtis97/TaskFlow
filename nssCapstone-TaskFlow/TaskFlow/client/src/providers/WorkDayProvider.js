@@ -22,17 +22,17 @@ export const WorkDayProvider = (props) => {
     });
   };
 
-  const deleteWorkDay = (workDayId) =>
-    getToken().then((token) =>
-      fetch(`/api/workDay/${workDayId}`, {
+  const deleteWorkDay = (workDayId) => {
+    return getToken().then((token) => {
+      return fetch(`/api/workDay/${workDayId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-      })
-    );
-
+      });
+    });
+  };
   const updateWorkDay = (workDay) => {
     return getToken().then((token) =>
       fetch(`/api/workDay/${workDay.id}`, {

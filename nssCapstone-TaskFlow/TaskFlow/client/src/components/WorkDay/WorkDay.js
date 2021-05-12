@@ -5,12 +5,12 @@ import { WorkDayContext } from "../../providers/WorkDayProvider";
 import { useHistory } from "react-router-dom";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
-const WorkDay = ({ workDay, GetJobsByWorkDay }) => {
+const WorkDay = ({ workDay, GetJobsByWorkDay, getAllJobs }) => {
   const { deleteWorkDay } = useContext(WorkDayContext);
   const history = useHistory();
 
   const workDayDelete = () => {
-    deleteWorkDay(workDay.workDay.id).then(GetJobsByWorkDay);
+    deleteWorkDay(workDay.workDay.id).then(GetJobsByWorkDay).then(getAllJobs);
   };
 
   return (
