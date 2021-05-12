@@ -6,7 +6,7 @@ import { AddressContext } from "../../providers/AddressProvider";
 import { useHistory, useParams } from "react-router-dom";
 
 export const JobForm = () => {
-  const { addJob, getJobById, updateJob, getAllJobs } = useContext(JobContext);
+  const { addJob } = useContext(JobContext);
   const { customers, getAllCustomers } = useContext(CustomerContext);
   const { GetAllAddressesByCustomerId } = useContext(AddressContext);
 

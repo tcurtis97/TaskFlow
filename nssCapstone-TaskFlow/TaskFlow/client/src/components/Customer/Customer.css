@@ -1,7 +1,31 @@
+.customers {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fbf5f3;
+}
+
+.customerCard {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fbf5f3;
+}
+
+.customerPhoneNumber {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fbf5f3;
+}
+
 .Customers {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #fbf5f3;
 }

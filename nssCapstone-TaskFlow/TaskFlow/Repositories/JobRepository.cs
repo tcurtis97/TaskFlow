@@ -158,6 +158,24 @@ namespace TaskFlow.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
+                    cmd.CommandText = "DELETE FROM WorkDay WHERE JobId = @Id";
+                    DbUtils.AddParameter(cmd, "@id", jobId);
+                    cmd.ExecuteNonQuery();
+                }
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Note WHERE JobId = @Id";
+                    DbUtils.AddParameter(cmd, "@id", jobId);
+                    cmd.ExecuteNonQuery();
+                }
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM WorkRecord WHERE JobId = @Id";
+                    DbUtils.AddParameter(cmd, "@id", jobId);
+                    cmd.ExecuteNonQuery();
+                }
+                using (var cmd = conn.CreateCommand())
+                {
                     cmd.CommandText = "DELETE FROM Job WHERE Id = @Id";
                     DbUtils.AddParameter(cmd, "@id", jobId);
                     cmd.ExecuteNonQuery();

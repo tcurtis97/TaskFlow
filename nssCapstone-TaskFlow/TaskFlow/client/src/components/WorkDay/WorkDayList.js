@@ -4,21 +4,19 @@ import { JobContext } from "../../providers/JobProvider";
 import WorkDay from "./WorkDay";
 
 const WorkDayList = () => {
-  const { GetJobsByWorkDay } = useContext(JobContext);
+  const { GetJobsByWorkDay, jobs } = useContext(JobContext);
 
-  const [jobs, setJobs] = useState([]);
+  // const [jobs, setJobs] = useState([]);
   console.log(jobs, "stirng");
 
   useEffect(() => {
-    GetJobsByWorkDay().then((response) => {
-      setJobs(response);
-    });
+    GetJobsByWorkDay();
   }, []);
 
   return (
     <section>
       {jobs.map((j) => (
-        <WorkDay key={j.id} workDay={j} />
+        <WorkDay key={j.id} workDay={j} GetJobsByWorkDay={GetJobsByWorkDay} />
       ))}
     </section>
   );

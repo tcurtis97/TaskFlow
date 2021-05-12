@@ -10,18 +10,16 @@ export const WorkDayProvider = (props) => {
   const history = useHistory();
 
   const addWorkDay = (workDay) => {
-    return getToken()
-      .then((token) => {
-        fetch(`/api/workDay`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(workDay),
-        });
-      })
-      .then(history.go());
+    return getToken().then((token) => {
+      return fetch(`/api/workDay`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(workDay),
+      });
+    });
   };
 
   const deleteWorkDay = (workDayId) =>
@@ -32,7 +30,7 @@ export const WorkDayProvider = (props) => {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-      }).then(history.go())
+      })
     );
 
   const updateWorkDay = (workDay) => {

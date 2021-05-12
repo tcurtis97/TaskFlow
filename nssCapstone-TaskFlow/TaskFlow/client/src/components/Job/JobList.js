@@ -54,7 +54,7 @@ const JobList = () => {
         New Job
       </Link>
       {jobs.map((j) => (
-        <Job key={j.id} job={j} />
+        <Job key={j.id} job={j} getAllJobs={getAllJobs} />
       ))}
     </section>
   );

@@ -7,7 +7,7 @@ import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
-const Job = ({ job }) => {
+const Job = ({ job, getAllJobs }) => {
   const { deleteJob } = useContext(JobContext);
   const { addWorkDay } = useContext(WorkDayContext);
 
@@ -19,7 +19,7 @@ const Job = ({ job }) => {
     addWorkDay({
       JobId: job.id,
       UserProfileId: 0,
-    });
+    }).then(getAllJobs);
   };
 
   return (
