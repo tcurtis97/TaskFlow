@@ -5,6 +5,7 @@ import { WorkDayContext } from "../../providers/WorkDayProvider";
 import { useHistory } from "react-router-dom";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const Job = ({ job }) => {
   const { deleteJob } = useContext(JobContext);
@@ -36,10 +37,11 @@ const Job = ({ job }) => {
 
         {job.completionDate !== "1900-01-01T00:00:00" ? (
           <p>
-            <strong>{job.completionDate}</strong>
+            Job was completed on:{" "}
+            <strong>{moment(job.completionDate).format("MMMM Do YYYY")}</strong>
           </p>
         ) : (
-          <div> Job is Uncomplete</div>
+          <strong>Job is Uncomplete</strong>
         )}
 
         <Link to={`/job/${job.id}`}>

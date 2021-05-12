@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { CustomerContext } from "../../providers/CustomerProvider";
+import "./Customer.css";
 
 import { useHistory, useParams } from "react-router-dom";
 
@@ -16,7 +17,7 @@ export const CustomerForm = () => {
   const history = useHistory();
   const { customerId } = useParams();
 
-  // function to take the values of the form fields and sets those values to state
+  // function to take the values of the form fields and sets those values to state,  to run onchange
   const handleControlledInputChange = (event) => {
     const newCustomer = { ...customer };
     let selectedVal = event.target.value;

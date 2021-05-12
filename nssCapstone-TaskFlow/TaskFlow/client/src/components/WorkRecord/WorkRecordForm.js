@@ -21,7 +21,7 @@ export const WorkRecordForm = () => {
   const history = useHistory();
   const { workRecordId } = useParams();
 
-  // function to take the values of the form fields and sets those values to state
+  // function to take the values of the form fields and sets those values to state,  to run onchange
   const handleControlledInputChange = (event) => {
     const newWorkRecord = { ...workRecord };
     let selectedVal = event.target.value;
@@ -45,7 +45,7 @@ export const WorkRecordForm = () => {
           id: workRecordId,
           noteText: workRecord.noteText,
           timeOnJob: workRecord.timeOnJob,
-        }).then(() => history.push(`/workRecord`));
+        }).then(() => history.goBack(1));
       } else {
         addWorkRecord({
           noteText: workRecord.noteText,

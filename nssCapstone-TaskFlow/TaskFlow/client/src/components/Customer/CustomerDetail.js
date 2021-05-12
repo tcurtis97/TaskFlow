@@ -8,6 +8,7 @@ import CustomerJob from "./CustomerJob";
 import { Link } from "react-router-dom";
 import { CardHeader } from "reactstrap";
 import { Button } from "reactstrap";
+import "./Customer.css";
 
 const CustomerDetails = () => {
   const [customer, SetCustomer] = useState({});

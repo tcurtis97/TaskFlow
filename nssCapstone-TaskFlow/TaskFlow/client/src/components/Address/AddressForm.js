@@ -5,12 +5,8 @@ import { AddressContext } from "../../providers/AddressProvider";
 import { useHistory, useParams } from "react-router-dom";
 
 export const AddressForm = () => {
-  const {
-    addAddress,
-    getAddressById,
-    updateAddress,
-    getAllAddresses,
-  } = useContext(AddressContext);
+  const { addAddress, getAddressById, updateAddress, getAllAddresses } =
+    useContext(AddressContext);
 
   const [address, setAddress] = useState({});
 
@@ -19,7 +15,7 @@ export const AddressForm = () => {
   const history = useHistory();
   const { addressId } = useParams();
 
-  // function to take the values of the form fields and sets those values to state
+  // function to take the values of the form fields and sets those values to state,  to run onchange
   const handleControlledInputChange = (event) => {
     const newAddress = { ...address };
     let selectedVal = event.target.value;
@@ -42,7 +38,7 @@ export const AddressForm = () => {
         updateAddress({
           id: addressId,
           address: address.address,
-        }).then(() => history.push(`/address`));
+        }).then(() => history.goBack(1));
       } else {
         addAddress({
           address: address.address,

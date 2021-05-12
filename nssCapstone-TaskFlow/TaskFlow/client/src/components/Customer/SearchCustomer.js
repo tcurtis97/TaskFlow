@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { CustomerContext } from "../../providers/CustomerProvider";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import "./Customer.css";
 
 export const SearchBar = () => {
   const { searchTerm, setSearchTerms } = useContext(CustomerContext);

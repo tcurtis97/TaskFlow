@@ -25,12 +25,10 @@ export const JobForm = () => {
     addressId: 0,
   });
 
-  const [upkeep, setUpKeep] = useState({
-    Board: {},
-  });
-
   const history = useHistory();
 
+  // function to take the values of the form fields and sets those values to state,function is set
+  //  to run onchange
   const handleControlledInputChange = (event) => {
     const newJob = { ...job };
     let selectedVal = event.target.value;
@@ -43,6 +41,7 @@ export const JobForm = () => {
     setJob(newJob);
   };
 
+  // this useEffect runs getaddresses when the state of job is changed
   useEffect(() => {
     getAddresses();
   }, [job]);
@@ -63,17 +62,12 @@ export const JobForm = () => {
     getAllCustomers();
   }, []);
 
-  // useEffect(() => {
-  //   GetAllAddressesByCustomerId(job.customerId).then((response) => {
-  //     SetAddresses(response);
-  //   });
-  // }, []);
-
+  // gets addresses by using the customer id which is gotten from the state variable,
+  // which is set by the onchange function on the select of a customer.Then sets those addresses
+  // to state
   const getAddresses = () => {
-    console.log("Hello world");
     GetAllAddressesByCustomerId(job.customerId).then((response) => {
       SetAddresses(response);
-      console.log(response);
     });
   };
 
@@ -124,6 +118,8 @@ export const JobForm = () => {
           </div>
         </fieldset> */}
 
+        {/* map over customers to create options for the select, also added a onSelect to 
+run get addreses which will get the addresses by the customer id that is selected */}
         <FormGroup>
           <select
             id="customerId"
@@ -139,6 +135,8 @@ export const JobForm = () => {
           </select>
         </FormGroup>
 
+        {/* if there is a customer id, run the select and map over addresses to create options.
+else just make a div that says the message Please Choose a customer */}
         {job.customerId !== 0 ? (
           <div className="Address_card">
             <select id="addressId" onChange={handleControlledInputChange}>

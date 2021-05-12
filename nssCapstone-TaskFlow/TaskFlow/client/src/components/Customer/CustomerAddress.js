@@ -4,6 +4,7 @@ import { AddressContext } from "../../providers/AddressProvider";
 import { useHistory } from "react-router-dom";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import "./Customer.css";
 
 const CustomerAddress = ({ address }) => {
   const { deleteAddress } = useContext(AddressContext);

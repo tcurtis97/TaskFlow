@@ -50,6 +50,7 @@ export const JobEdit = () => {
       window.alert("Please enter a Descritpion");
     } else {
       updateJob({
+        id: jobId,
         description: job.description,
         customerId: job.customerId,
         addressId: job.addressId,
@@ -162,7 +163,7 @@ export const JobEdit = () => {
             handleClickSaveJob();
           }}
         >
-          Add Job
+          Save Job
         </Button>
       </div>
     </Form>

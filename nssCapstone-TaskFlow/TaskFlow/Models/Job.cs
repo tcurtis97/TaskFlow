@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,9 +19,10 @@ namespace TaskFlow.Models
 
         public string ImageUrl { get; set; }
 
+        //[DisplayFormat(DataFormatString = "{0:MMMM-dd-yyyy}")]
         public DateTime CompletionDate { get; set; }
 
-
+        //[DisplayFormat(DataFormatString = "{0:MMMM-dd-yyyy}")]
         public DateTime CreateDate { get; set; }
 
         public Customer Customer { get; set; }

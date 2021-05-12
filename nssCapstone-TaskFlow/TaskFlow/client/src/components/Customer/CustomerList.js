@@ -2,14 +2,11 @@ import React, { useContext, useEffect } from "react";
 import { CustomerContext } from "../../providers/CustomerProvider";
 import Customer from "./Customer";
 import { Link } from "react-router-dom";
+import "./Customer.css";
 
 const CustomerList = () => {
-  const {
-    customers,
-    getAllCustomers,
-    searchTerms,
-    searchCustomers,
-  } = useContext(CustomerContext);
+  const { customers, getAllCustomers, searchTerms, searchCustomers } =
+    useContext(CustomerContext);
 
   useEffect(() => {
     getAllCustomers();
@@ -24,7 +21,7 @@ const CustomerList = () => {
   }, [searchTerms]);
 
   return (
-    <section>
+    <section className="customers">
       <Link to="/customer/add" className="nav-link">
         New Customer
       </Link>

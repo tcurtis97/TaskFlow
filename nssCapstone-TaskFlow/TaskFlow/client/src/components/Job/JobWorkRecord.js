@@ -4,6 +4,7 @@ import { WorkRecordContext } from "../../providers/WorkRecordProvider";
 import { useHistory } from "react-router-dom";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const JobWorkRecord = ({ workRecord }) => {
   const { deleteWorkRecord } = useContext(WorkRecordContext);
@@ -22,10 +23,12 @@ const JobWorkRecord = ({ workRecord }) => {
           <strong>{workRecord.noteText}</strong>
         </CardText>
         <CardText>
-          <strong>{workRecord.createDate}</strong>
+          <strong>
+            {moment(workRecord.createDate).format("MMMM Do YYYY")}
+          </strong>
         </CardText>
         <CardText>
-          <strong>{workRecord.timeOnJob}</strong>
+          <strong>Hours on job: {workRecord.timeOnJob}</strong>
         </CardText>
         <Link to={`/workRecord/edit/${workRecord.id}`}>
           <Button type="button">Edit</Button>

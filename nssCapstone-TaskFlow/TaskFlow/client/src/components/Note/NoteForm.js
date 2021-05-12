@@ -17,7 +17,7 @@ export const NoteForm = () => {
   const history = useHistory();
   const { noteId } = useParams();
 
-  // function to take the values of the form fields and sets those values to state
+  // function to take the values of the form fields and sets those values to state,  to run onchange
   const handleControlledInputChange = (event) => {
     const newNote = { ...note };
     let selectedVal = event.target.value;
@@ -40,7 +40,7 @@ export const NoteForm = () => {
         updateNote({
           id: noteId,
           noteText: note.noteText,
-        }).then(() => history.push(`/note`));
+        }).then(() => history.goBack(1));
       } else {
         addNote({
           noteText: note.noteText,

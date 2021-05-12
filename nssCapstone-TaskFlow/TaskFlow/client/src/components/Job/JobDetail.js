@@ -5,7 +5,7 @@ import { WorkRecordContext } from "../../providers/WorkRecordProvider";
 import { useParams } from "react-router-dom";
 import JobNote from "./JobNote";
 import JobWorkRecord from "./JobWorkRecord";
-
+import moment from "moment";
 import { Link, useHistory } from "react-router-dom";
 import { CardHeader, CardText, Button } from "reactstrap";
 
@@ -18,11 +18,16 @@ const JobDetails = () => {
   const [notes, SetNotes] = useState([]);
   const [workRecords, SetWorkRecords] = useState([]);
   console.log(notes);
-  const { GetJobByIdWithDetails, CompleteJob } = useContext(JobContext);
+  const { GetJobByIdWithDetails, CompleteJob, deleteJob } =
+    useContext(JobContext);
   const { GetAllNotesByJobId } = useContext(NoteContext);
   const { GetAllWorkRecordsByJobId } = useContext(WorkRecordContext);
 
   const { id } = useParams();
+
+  const jobDelete = () => {
+    deleteJob(job.id).then(history.push(`/job`));
+  };
 
   useEffect(() => {
     console.log("useEffect", id);
@@ -62,6 +67,9 @@ const JobDetails = () => {
       >
         Back
       </Button>
+      <Button variant="secondary" onClick={jobDelete} className="btn-primary">
+        Delete
+      </Button>
       <CardHeader>
         <strong>{job.customer.name}</strong>
       </CardHeader>
@@ -75,6 +83,17 @@ const JobDetails = () => {
       <CardText>
         <strong>{job.description}</strong>
       </CardText>
+
+      {job.completionDate !== "1900-01-01T00:00:00" ? (
+        <p>
+          <strong>
+            Job was completed on:{" "}
+            {moment(job.completionDate).format("MMMM Do YYYY")}
+          </strong>
+        </p>
+      ) : (
+        <strong>Job is Uncomplete</strong>
+      )}
 
       <CardHeader>
         <Link to={`/workRecord/add/${job.id}`}>

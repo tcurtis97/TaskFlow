@@ -4,6 +4,7 @@ import { CustomerContext } from "../../providers/CustomerProvider";
 import { useHistory } from "react-router-dom";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import "./Customer.css";
 
 const Customer = ({ customer }) => {
   const { deleteCustomer } = useContext(CustomerContext);
@@ -13,12 +14,12 @@ const Customer = ({ customer }) => {
   };
 
   return (
-    <Card className="m-4">
-      <CardHeader>
+    <Card className="customerCard">
+      <CardHeader className="customerName">
         <Link to={`customer/${customer.id}`}>{customer.name}</Link>
       </CardHeader>
       <CardBody>
-        <CardText>
+        <CardText className="customerPhoneNumber">
           <strong>{customer.phoneNumber}</strong>
         </CardText>
         <Link to={`/customer/edit/${customer.id}`}>

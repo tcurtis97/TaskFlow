@@ -1,4 +1,6 @@
 import React from "react";
+import { Button } from "reactstrap";
+import { Link } from "react-router-dom";
 
 export default function Hello() {
   return (
@@ -13,6 +15,15 @@ export default function Hello() {
       }}
     >
       hello
+      <Link to="/customer">
+        <Button type="button">customer</Button>
+      </Link>
+      <Link to="/job">
+        <Button type="button">job</Button>
+      </Link>
+      <Link to="/workday">
+        <Button type="button">workday</Button>
+      </Link>
     </span>
   );
 }

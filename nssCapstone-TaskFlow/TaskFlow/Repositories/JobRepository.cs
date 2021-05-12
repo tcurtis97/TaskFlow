@@ -175,16 +175,14 @@ namespace TaskFlow.Repositories
                     cmd.CommandText = @"
                         UPDATE Job
                            SET Description = @Description,
-                                ImageUrl = @ImageUrl
-                                CompletionDate = @CompletionDate
-                                CreateDate = @CreateDate
+                                ImageUrl = @ImageUrl,
+                               
+                                
                                 CustomerId = @CustomerId
                          WHERE Id = @Id";
 
                     DbUtils.AddParameter(cmd, "@Description", job.Description);
                     DbUtils.AddParameter(cmd, "@ImageUrl", job.ImageUrl);
-                    DbUtils.AddParameter(cmd, "@CompletionDate", job.CompletionDate);
-                    DbUtils.AddParameter(cmd, "@CreateDate", job.CreateDate);
                     DbUtils.AddParameter(cmd, "@CustomerId", job.CustomerId);
                     DbUtils.AddParameter(cmd, "@AddressId", job.AddressId);
                     DbUtils.AddParameter(cmd, "@Id", job.Id);

@@ -135,17 +135,11 @@ namespace TaskFlow.Repositories
                 {
                     cmd.CommandText = @"
                         UPDATE Note
-                           SET UserProfileId = @UserProfileId,
-                                JobId = @JobId
-                                CreateDate = @CreateDate
-                                NoteText = @NoteText
+                           SET NoteText = @NoteText
                          WHERE Id = @Id";
 
-                    DbUtils.AddParameter(cmd, "@UserProfileId", note.UserProfileId);
-                    DbUtils.AddParameter(cmd, "@JobId", note.JobId);
-                    DbUtils.AddParameter(cmd, "@CreateDate", note.CreateDate);
                     DbUtils.AddParameter(cmd, "@NoteText", note.NoteText);
-
+                    DbUtils.AddParameter(cmd, "@Id", note.Id);
                     cmd.ExecuteNonQuery();
                 }
             }
