@@ -38,6 +38,7 @@ namespace TaskFlow.Repositories
                     LEFT JOIN Address a ON j.AddressId = a.Id
                      LEFT JOIN Customer c ON j.CustomerId = c.Id
                     LEFT JOIN UserProfile u ON wd.UserProfileId = u.Id
+                    ORDER BY j.CreateDate DESC
                     ";
 
                     var reader = cmd.ExecuteReader();

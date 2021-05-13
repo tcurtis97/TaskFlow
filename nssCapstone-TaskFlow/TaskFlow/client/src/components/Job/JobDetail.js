@@ -7,7 +7,9 @@ import JobNote from "./JobNote";
 import JobWorkRecord from "./JobWorkRecord";
 import moment from "moment";
 import { Link, useHistory } from "react-router-dom";
-import { CardHeader, CardText, Button } from "reactstrap";
+import { CardHeader, CardText, Button, Card } from "reactstrap";
+import "./Job.css";
+import TaskFlowLogo from "../Image/TaskFlowLogo.png";
 
 const JobDetails = () => {
   const [job, SetJob] = useState({
@@ -57,67 +59,90 @@ const JobDetails = () => {
   }
 
   return (
-    <div className="container">
-      <Button
-        variant
-        className="back_button"
-        onClick={() => {
-          history.goBack();
-        }}
-      >
-        Back
-      </Button>
-      <Button variant="secondary" onClick={jobDelete} className="btn-primary">
-        Delete
-      </Button>
-      <CardHeader>
-        <strong>{job.customer.name}</strong>
-      </CardHeader>
-      <CardHeader>
-        <strong>{job.customer.phoneNumber}</strong>
-      </CardHeader>
-      <CardHeader>
-        <strong>{job.address.address}</strong>
-      </CardHeader>
+    <div>
+      <div className="Logo">
+        <img
+          src={TaskFlowLogo}
+          width="200"
+          height="200"
+          alt="Logo"
+          className="logo"
+        ></img>
+      </div>
+      <div className="container">
+        <div className="backButton">
+          <Button
+            color="primary"
+            onClick={() => {
+              history.goBack();
+            }}
+          >
+            Back
+          </Button>
+        </div>
+        <div className="deleteButton">
+          <Button color="primary" onClick={jobDelete} className="btn-primary">
+            Delete
+          </Button>
+        </div>
+        <CardHeader className="customerInfo">
+          <strong>{job.customer.name}</strong>
+        </CardHeader>
+        <CardText className="customerInfo">
+          <strong>{job.customer.phoneNumber}</strong>
+        </CardText>
+        <CardText className="customerInfo">
+          <strong>{job.address.address}</strong>
+        </CardText>
 
-      <CardText>
-        <strong>{job.description}</strong>
-      </CardText>
+        <CardText className="JobInfo">
+          <strong>Description: {job.description}</strong>
+        </CardText>
 
-      {job.completionDate !== "1900-01-01T00:00:00" ? (
-        <p>
-          <strong>
-            Job was completed on:{" "}
-            {moment(job.completionDate).format("MMMM Do YYYY")}
-          </strong>
-        </p>
-      ) : (
-        <strong>Job is Uncomplete</strong>
-      )}
+        {job.completionDate !== "1900-01-01T00:00:00" ? (
+          <p>
+            <strong>
+              Job was completed on:{" "}
+              {moment(job.completionDate).format("MMMM Do YYYY")}
+            </strong>
+          </p>
+        ) : (
+          <strong>Job is Uncomplete</strong>
+        )}
 
-      <CardHeader>
-        <Link to={`/workRecord/add/${job.id}`}>
-          <Button type="button">Add WorkRecord</Button>
-        </Link>
-        <strong>Work Records:</strong>
-        {workRecords.map((w) => (
-          <JobWorkRecord key={w.id} workRecord={w} />
-        ))}
-      </CardHeader>
+        <Card>
+          <Link to={`/workRecord/add/${job.id}`}>
+            <Button type="button" color="primary">
+              Add WorkRecord
+            </Button>
+          </Link>
 
-      <CardHeader>
-        <Link to={`/note/add/${job.id}`}>
-          <Button type="button">Add note</Button>
-        </Link>
-        <strong>Notes:</strong>
-        {notes.map((n) => (
-          <JobNote key={n.id} note={n} />
-        ))}
-      </CardHeader>
+          <CardText>
+            <strong>Work Records:</strong>
+            {workRecords.map((w) => (
+              <JobWorkRecord key={w.id} workRecord={w} />
+            ))}
+          </CardText>
+        </Card>
 
-      <Button variant="secondary" onClick={JobComplete} className="btn-primary">
-        Complete Job
-      </Button>
+        <Card>
+          <Link to={`/note/add/${job.id}`}>
+            <Button type="button" color="primary">
+              Add note
+            </Button>
+          </Link>
+          <CardText>
+            <strong>Notes:</strong>
+            {notes.map((n) => (
+              <JobNote key={n.id} note={n} />
+            ))}
+          </CardText>
+        </Card>
+
+        <Button color="primary" onClick={JobComplete} className="btn-primary">
+          Complete Job
+        </Button>
+      </div>
     </div>
   );
 };

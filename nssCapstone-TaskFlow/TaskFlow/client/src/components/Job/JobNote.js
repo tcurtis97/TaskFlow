@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import "./Job.css";
 
 const JobNote = ({ note }) => {
   const { deleteNote } = useContext(NoteContext);
@@ -28,11 +29,7 @@ const JobNote = ({ note }) => {
         <Link to={`/note/edit/${note.id}`}>
           <Button type="button">Edit</Button>
         </Link>
-        <Button
-          variant="secondary"
-          onClick={NoteDelete}
-          className="btn-primary"
-        >
+        <Button color="primary" onClick={NoteDelete} className="btn-primary">
           Delete
         </Button>
       </CardBody>

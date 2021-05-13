@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { AddressContext } from "../../providers/AddressProvider";
-
+import TaskFlowLogo from "../Image/TaskFlowLogo.png";
 import { useHistory, useParams } from "react-router-dom";
+import "../Customer/Customer.css";
 
 export const AddressForm = () => {
   const { addAddress, getAddressById, updateAddress, getAllAddresses } =
@@ -62,50 +63,59 @@ export const AddressForm = () => {
   }, []);
 
   return (
-    <Form className="addressForm">
-      <h2 className="addressForm__title">
-        {addressId ? "Save Address" : "Add Address"}
-      </h2>
-
-      <Button
-        variant
-        className="back_button"
-        onClick={() => {
-          history.goBack();
-        }}
-      >
-        Back
-      </Button>
-
-      <div className="form_background">
-        <fieldset>
-          <div className="form-group">
-            <Label htmlFor="address">Address name:</Label>
-            <Input
-              type="text"
-              id="address"
-              onChange={handleControlledInputChange}
-              required
-              autoFocus
-              className="form-control"
-              value={address.address}
-              placeholder="Address"
-            />
-          </div>
-        </fieldset>
+    <Form>
+      <div className="Logo">
+        <img
+          src={TaskFlowLogo}
+          width="200"
+          height="200"
+          alt="Logo"
+          className="logo"
+        ></img>
+      </div>
+      <div className="addressForm">
+        <h2 className="addressForm__title">
+          {addressId ? "Save Address" : "Add Address"}
+        </h2>
 
         <Button
-          style={{
-            color: "black",
-          }}
-          className="add_button"
-          onClick={(event) => {
-            event.preventDefault();
-            handleClickSaveAddress();
+          color="primary"
+          className="back_button"
+          onClick={() => {
+            history.goBack();
           }}
         >
-          {addressId ? "Save Address" : "Add Address"}
+          Back
         </Button>
+
+        <div className="form_background">
+          <fieldset>
+            <div className="form-group">
+              <Label htmlFor="address">Address name:</Label>
+              <Input
+                type="text"
+                id="address"
+                onChange={handleControlledInputChange}
+                required
+                autoFocus
+                className="form-control"
+                value={address.address}
+                placeholder="Address"
+              />
+            </div>
+          </fieldset>
+
+          <Button
+            color="primary"
+            className="add_button"
+            onClick={(event) => {
+              event.preventDefault();
+              handleClickSaveAddress();
+            }}
+          >
+            {addressId ? "Save Address" : "Add Address"}
+          </Button>
+        </div>
       </div>
     </Form>
   );

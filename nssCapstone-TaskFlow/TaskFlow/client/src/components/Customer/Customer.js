@@ -16,22 +16,33 @@ const Customer = ({ customer }) => {
   return (
     <Card className="customerCard">
       <CardHeader className="customerName">
-        <Link to={`customer/${customer.id}`}>{customer.name}</Link>
+        <p>
+          <strong>{customer.name}</strong>
+        </p>
       </CardHeader>
       <CardBody>
         <CardText className="customerPhoneNumber">
           <strong>{customer.phoneNumber}</strong>
         </CardText>
-        <Link to={`/customer/edit/${customer.id}`}>
-          <Button type="button">Edit</Button>
-        </Link>
-        <Button
-          variant="secondary"
-          onClick={customerDelete}
-          className="btn-primary"
-        >
-          Delete
-        </Button>
+        <div className="buttons">
+          <Link to={`customer/${customer.id}`}>
+            <Button type="button" color="primary">
+              Details
+            </Button>
+          </Link>
+          <Link to={`/customer/edit/${customer.id}`}>
+            <Button type="button" color="primary">
+              Edit
+            </Button>
+          </Link>
+          <Button
+            color="primary"
+            onClick={customerDelete}
+            className="btn-primary"
+          >
+            Delete
+          </Button>
+        </div>
       </CardBody>
     </Card>
   );

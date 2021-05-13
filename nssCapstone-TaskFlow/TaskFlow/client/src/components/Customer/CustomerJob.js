@@ -4,7 +4,7 @@ import { JobContext } from "../../providers/JobProvider";
 import { useHistory } from "react-router-dom";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
-import "./Customer.scss";
+import "./Customer.css";
 import moment from "moment";
 
 const CustomerJob = ({ job }) => {
@@ -15,13 +15,19 @@ const CustomerJob = ({ job }) => {
       </CardHeader>
       <CardBody>
         <CardText>{moment(job.createDate).format("MMMM Do YYYY")}</CardText>
-        <Link to={`/Job/edit/${job.id}`}>
-          <Button type="button">Edit</Button>
-        </Link>
+        <div className="buttons">
+          <Link to={`/Job/edit/${job.id}`}>
+            <Button type="button" color="primary">
+              Edit
+            </Button>
+          </Link>
 
-        <Link to={`/job/${job.id}`}>
-          <Button type="button">Details</Button>
-        </Link>
+          <Link to={`/job/${job.id}`}>
+            <Button type="button" color="primary">
+              Details
+            </Button>
+          </Link>
+        </div>
       </CardBody>
     </Card>
   );

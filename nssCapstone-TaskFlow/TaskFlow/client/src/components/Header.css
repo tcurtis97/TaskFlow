@@ -1,0 +1,51 @@
+.Navbar {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.mainNav {
+  background-color: light;
+}
+
+.Nav.Item {
+  display: flex;
+  flex-basis: 20%;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+.Nav.Link {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.logoutBtn {
+  display: flex;
+  /* flex-basis: 40%; */
+  margin-left: 65em;
+}
+
+.homeButtons {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-right: 50em;
+  margin-left: 50em;
+}
+
+.homeLinks {
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.homeCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1em;
+}

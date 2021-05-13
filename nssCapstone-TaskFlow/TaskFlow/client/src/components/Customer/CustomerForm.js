@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { CustomerContext } from "../../providers/CustomerProvider";
-import "./Customer.scss";
-
+import "./Customer.css";
+import TaskFlowLogo from "../Image/TaskFlowLogo.png";
 import { useHistory, useParams } from "react-router-dom";
 
 export const CustomerForm = () => {
@@ -63,67 +63,76 @@ export const CustomerForm = () => {
   }, []);
 
   return (
-    <Form className="customerForm">
-      <h2 className="customerForm__title">
-        {customerId ? "Save Customer" : "Add Customer"}
-      </h2>
-
-      <Button
-        variant
-        className="back_button"
-        onClick={() => {
-          history.goBack();
-        }}
-      >
-        Back
-      </Button>
-
-      <div className="form_background">
-        <fieldset>
-          <div className="form-group">
-            <Label htmlFor="name">Customer name:</Label>
-            <Input
-              type="text"
-              id="name"
-              onChange={handleControlledInputChange}
-              required
-              autoFocus
-              className="form-control"
-              value={customer.name}
-              placeholder="Customer name"
-            />
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <div className="form-group">
-            <Label htmlFor="phoneNumber">Phone Number:</Label>
-            <Input
-              type="tel"
-              id="phoneNumber"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              onChange={handleControlledInputChange}
-              required
-              autoFocus
-              className="form-control"
-              value={customer.phoneNumber}
-              placeholder="Phone Number"
-            />
-          </div>
-        </fieldset>
+    <Form>
+      <div className="Logo">
+        <img
+          src={TaskFlowLogo}
+          width="200"
+          height="200"
+          alt="Logo"
+          className="logo"
+        ></img>
+      </div>
+      <div className="customerForm">
+        <h2 className="customerForm__title">
+          {customerId ? "Save Customer" : "Add Customer"}
+        </h2>
 
         <Button
-          style={{
-            color: "black",
-          }}
-          className="add_button"
-          onClick={(event) => {
-            event.preventDefault();
-            handleClickSaveCustomer();
+          color="primary"
+          className="back_button"
+          onClick={() => {
+            history.goBack();
           }}
         >
-          {customerId ? "Save Customer" : "Add Customer"}
+          Back
         </Button>
+
+        <div className="form_background">
+          <fieldset>
+            <div className="form-group">
+              <Label htmlFor="name">Customer name:</Label>
+              <Input
+                type="text"
+                id="name"
+                onChange={handleControlledInputChange}
+                required
+                autoFocus
+                className="form-control"
+                value={customer.name}
+                placeholder="Customer name"
+              />
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div className="form-group">
+              <Label htmlFor="phoneNumber">Phone Number:</Label>
+              <Input
+                type="tel"
+                id="phoneNumber"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                onChange={handleControlledInputChange}
+                required
+                autoFocus
+                className="form-control"
+                value={customer.phoneNumber}
+                placeholder="Phone Number"
+              />
+            </div>
+          </fieldset>
+
+          <Button
+            color="primary"
+            className="add_button"
+            onClick={(event) => {
+              event.preventDefault();
+              handleClickSaveCustomer();
+            }}
+          >
+            {customerId ? "Save Customer" : "Add Customer"}
+          </Button>
+        </div>
       </div>
     </Form>
   );
