@@ -42,7 +42,7 @@
 .search:hover,
 .search:focus {
   border: 1.5px solid #009688;
-  background-color: white;
+  background-color: #c9f0ff;
 }
 
 .searchDiv {

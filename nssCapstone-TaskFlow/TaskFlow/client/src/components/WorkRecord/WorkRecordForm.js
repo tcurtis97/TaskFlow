@@ -107,7 +107,7 @@ export const WorkRecordForm = () => {
                 autoFocus
                 className="form-control"
                 value={workRecord.noteText}
-                placeholder="NoteText"
+                placeholder="WorkRecord"
               />
             </div>
           </fieldset>

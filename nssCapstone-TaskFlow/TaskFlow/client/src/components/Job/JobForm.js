@@ -134,6 +134,7 @@ run get addreses which will get the addresses by the customer id that is selecte
           <FormGroup>
             <select
               id="customerId"
+              className="selector"
               onSelect={getAddresses}
               onChange={handleControlledInputChange}
             >
@@ -150,7 +151,11 @@ run get addreses which will get the addresses by the customer id that is selecte
 else just make a div that says the message Please Choose a customer */}
           {job.customerId !== 0 ? (
             <div className="Address_card">
-              <select id="addressId" onChange={handleControlledInputChange}>
+              <select
+                id="addressId"
+                className="selector"
+                onChange={handleControlledInputChange}
+              >
                 <option value="0">Select an address </option>
                 {Addresses.map((a) => (
                   <option key={a.id} value={a.id}>

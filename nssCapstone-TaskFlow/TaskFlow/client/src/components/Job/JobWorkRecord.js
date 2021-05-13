@@ -31,18 +31,20 @@ const JobWorkRecord = ({ workRecord }) => {
         <CardText>
           <strong>Hours on job: {workRecord.timeOnJob}</strong>
         </CardText>
-        <Link to={`/workRecord/edit/${workRecord.id}`}>
-          <Button type="button" color="primary">
-            Edit
+        <div className="buttons">
+          <Link to={`/workRecord/edit/${workRecord.id}`}>
+            <Button type="button" color="primary">
+              Edit
+            </Button>
+          </Link>
+          <Button
+            color="primary"
+            onClick={WorkRecordDelete}
+            className="btn-primary"
+          >
+            Delete
           </Button>
-        </Link>
-        <Button
-          color="primary"
-          onClick={WorkRecordDelete}
-          className="btn-primary"
-        >
-          Delete
-        </Button>
+        </div>
       </CardBody>
     </Card>
   );

@@ -127,7 +127,7 @@ const JobDetails = () => {
 
         <Card>
           <Link to={`/note/add/${job.id}`}>
-            <Button type="button" color="primary">
+            <Button type="button" color="primary" className="addNoteBt">
               Add note
             </Button>
           </Link>
