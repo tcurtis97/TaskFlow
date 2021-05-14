@@ -113,22 +113,6 @@ export const JobForm = () => {
             </div>
           </fieldset>
 
-          {/* <fieldset>
-          <div className="form-group">
-            <Label htmlFor="ImageUrl">ImageUrl:</Label>
-            <Input
-              type="text"
-              id="ImageUrl"
-              onChange={handleControlledInputChange}
-              required
-              autoFocus
-              className="form-control"
-              value={job.ImageUrl}
-              placeholder="ImageUrl"
-            />
-          </div>
-        </fieldset> */}
-
           {/* map over customers to create options for the select, also added a onSelect to 
 run get addreses which will get the addresses by the customer id that is selected */}
           <FormGroup>

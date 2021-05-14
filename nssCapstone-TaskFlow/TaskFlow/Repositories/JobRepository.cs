@@ -20,12 +20,12 @@ namespace TaskFlow.Repositories
                 {
                     cmd.CommandText = @"
                  SELECT  j.Id, j.Description, ISNULL(j.ImageUrl, '') as ImageUrl, ISNULL(j.CompletionDate, '') as CompletionDate,
-                           j.CreateDate, j.CustomerId, j.AddressId,
+                         j.CreateDate, j.CustomerId, j.AddressId,
 
-                            c.Id AS CustomerId, c.[Name], c.PhoneNumber,
+                          c.Id AS CustomerId, c.[Name], c.PhoneNumber,
 
 
-                                 a.Id AS AddressId, a.CustomerId, a.Address,
+                          a.Id AS AddressId, a.CustomerId, a.Address,
 
                          
                         ISNULL( wd.UserProfileId, 0) as UserProfileId, ISNULL(wd.Id, 0) as WorkDayId, ISNULL(wd.JobId, 0) AS JobId,

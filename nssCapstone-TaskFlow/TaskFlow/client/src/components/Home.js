@@ -21,14 +21,14 @@ export default function Hello() {
 
         <Link to="/customer" className="homeLinks">
           <Button type="button" color="primary" size="lg">
-            Customer
+            Customers
           </Button>{" "}
         </Link>
         {/* </Card> */}
         {/* <Card className="homeCard"> */}
         <Link to="/job" className="homeLinks">
           <Button type="button" color="primary" size="lg">
-            Job
+            Job List
           </Button>{" "}
         </Link>
         {/* </Card> */}
