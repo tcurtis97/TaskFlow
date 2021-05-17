@@ -6,6 +6,7 @@ export const JobContext = React.createContext();
 export const JobProvider = (props) => {
   const { getToken } = useContext(UserProfileContext);
   const [jobs, setjobs] = useState([]);
+  const [jobWorkDay, setjobWorkDay] = useState([]);
   const [viewingUncomplete, setViewingUncomplete] = useState(false);
 
   const getAllJobs = () => {
@@ -122,7 +123,9 @@ export const JobProvider = (props) => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }).then((res) => res.json())
+      })
+        .then((res) => res.json())
+        .then(setjobWorkDay)
     );
   };
 
@@ -142,6 +145,9 @@ export const JobProvider = (props) => {
         GetAllJobsByCustomerId,
         CompleteJob,
         GetJobsByWorkDay,
+        setjobs,
+        setjobWorkDay,
+        jobWorkDay,
       }}
     >
       {props.children}

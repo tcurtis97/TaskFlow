@@ -125,11 +125,11 @@ namespace TaskFlow.Repositories
                 {
                     cmd.CommandText = @"
                         UPDATE Address
-                           SET CustomerId = @CustomerId,
+                           SET 
                                 Address = @Address
                          WHERE Id = @Id";
 
-                    DbUtils.AddParameter(cmd, "@CustomerId", address.CustomerId);
+                   
                     DbUtils.AddParameter(cmd, "@Address", address.Address);
                     DbUtils.AddParameter(cmd, "@Id", address.Id);
 

@@ -38,6 +38,7 @@ namespace TaskFlow.Repositories
                     LEFT JOIN Address a ON j.AddressId = a.Id
                      LEFT JOIN Customer c ON j.CustomerId = c.Id
                     LEFT JOIN UserProfile u ON wd.UserProfileId = u.Id
+                    ORDER BY j.CreateDate DESC
                     ";
 
                     var reader = cmd.ExecuteReader();
@@ -158,6 +159,24 @@ namespace TaskFlow.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
+                    cmd.CommandText = "DELETE FROM WorkDay WHERE JobId = @Id";
+                    DbUtils.AddParameter(cmd, "@id", jobId);
+                    cmd.ExecuteNonQuery();
+                }
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Note WHERE JobId = @Id";
+                    DbUtils.AddParameter(cmd, "@id", jobId);
+                    cmd.ExecuteNonQuery();
+                }
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM WorkRecord WHERE JobId = @Id";
+                    DbUtils.AddParameter(cmd, "@id", jobId);
+                    cmd.ExecuteNonQuery();
+                }
+                using (var cmd = conn.CreateCommand())
+                {
                     cmd.CommandText = "DELETE FROM Job WHERE Id = @Id";
                     DbUtils.AddParameter(cmd, "@id", jobId);
                     cmd.ExecuteNonQuery();
@@ -175,16 +194,14 @@ namespace TaskFlow.Repositories
                     cmd.CommandText = @"
                         UPDATE Job
                            SET Description = @Description,
-                                ImageUrl = @ImageUrl
-                                CompletionDate = @CompletionDate
-                                CreateDate = @CreateDate
+                                ImageUrl = @ImageUrl,
+                               
+                                
                                 CustomerId = @CustomerId
                          WHERE Id = @Id";
 
                     DbUtils.AddParameter(cmd, "@Description", job.Description);
                     DbUtils.AddParameter(cmd, "@ImageUrl", job.ImageUrl);
-                    DbUtils.AddParameter(cmd, "@CompletionDate", job.CompletionDate);
-                    DbUtils.AddParameter(cmd, "@CreateDate", job.CreateDate);
                     DbUtils.AddParameter(cmd, "@CustomerId", job.CustomerId);
                     DbUtils.AddParameter(cmd, "@AddressId", job.AddressId);
                     DbUtils.AddParameter(cmd, "@Id", job.Id);

@@ -2,14 +2,13 @@ import React, { useContext, useEffect } from "react";
 import { CustomerContext } from "../../providers/CustomerProvider";
 import Customer from "./Customer";
 import { Link } from "react-router-dom";
+import "./Customer.css";
+import { Button } from "reactstrap";
+import TaskFlowLogo from "../Image/TaskFlowLogo.png";
 
 const CustomerList = () => {
-  const {
-    customers,
-    getAllCustomers,
-    searchTerms,
-    searchCustomers,
-  } = useContext(CustomerContext);
+  const { customers, getAllCustomers, searchTerms, searchCustomers } =
+    useContext(CustomerContext);
 
   useEffect(() => {
     getAllCustomers();
@@ -24,9 +23,11 @@ const CustomerList = () => {
   }, [searchTerms]);
 
   return (
-    <section>
+    <section className="container">
       <Link to="/customer/add" className="nav-link">
-        New Customer
+        <Button type="button" color="primary">
+          Add Job
+        </Button>
       </Link>
       {customers.map((c) => (
         <Customer key={c.id} customer={c} />

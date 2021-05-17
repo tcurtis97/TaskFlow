@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { NoteContext } from "../../providers/NoteProvider";
-
+import TaskFlowLogo from "../Image/TaskFlowLogo.png";
 import { useHistory, useParams } from "react-router-dom";
 
 export const NoteForm = () => {
@@ -17,7 +17,7 @@ export const NoteForm = () => {
   const history = useHistory();
   const { noteId } = useParams();
 
-  // function to take the values of the form fields and sets those values to state
+  // function to take the values of the form fields and sets those values to state,  to run onchange
   const handleControlledInputChange = (event) => {
     const newNote = { ...note };
     let selectedVal = event.target.value;
@@ -40,7 +40,7 @@ export const NoteForm = () => {
         updateNote({
           id: noteId,
           noteText: note.noteText,
-        }).then(() => history.push(`/note`));
+        }).then(() => history.goBack(1));
       } else {
         addNote({
           noteText: note.noteText,
@@ -64,48 +64,56 @@ export const NoteForm = () => {
   }, []);
 
   return (
-    <Form className="noteForm">
-      <h2 className="noteForm__title">{noteId ? "Save Note" : "Add Note"}</h2>
-
-      <Button
-        variant
-        className="back_button"
-        onClick={() => {
-          history.goBack();
-        }}
-      >
-        Back
-      </Button>
-
-      <div className="form_background">
-        <fieldset>
-          <div className="form-group">
-            <Label htmlFor="noteText">Note Text:</Label>
-            <Input
-              type="text"
-              id="noteText"
-              onChange={handleControlledInputChange}
-              required
-              autoFocus
-              className="form-control"
-              value={note.noteText}
-              placeholder="NoteText"
-            />
-          </div>
-        </fieldset>
-
+    <Form>
+      <div className="Logo">
+        <img
+          src={TaskFlowLogo}
+          width="200"
+          height="200"
+          alt="Logo"
+          className="logo"
+        ></img>
+      </div>
+      <div className="noteForm">
+        <h2 className="noteForm__title">{noteId ? "Save Note" : "Add Note"}</h2>
         <Button
-          style={{
-            color: "black",
-          }}
-          className="add_button"
-          onClick={(event) => {
-            event.preventDefault();
-            handleClickSaveNote();
+          color="primary"
+          className="back_button"
+          onClick={() => {
+            history.goBack();
           }}
         >
-          {noteId ? "Save Note" : "Add Note"}
+          Back
         </Button>
+
+        <div className="form_background">
+          <fieldset>
+            <div className="form-group">
+              <Label htmlFor="noteText">Note Text:</Label>
+              <Input
+                type="text"
+                id="noteText"
+                onChange={handleControlledInputChange}
+                required
+                autoFocus
+                className="form-control"
+                value={note.noteText}
+                placeholder="NoteText"
+              />
+            </div>
+          </fieldset>
+
+          <Button
+            color="primary"
+            className="add_button"
+            onClick={(event) => {
+              event.preventDefault();
+              handleClickSaveNote();
+            }}
+          >
+            {noteId ? "Save Note" : "Add Note"}
+          </Button>
+        </div>
       </div>
     </Form>
   );

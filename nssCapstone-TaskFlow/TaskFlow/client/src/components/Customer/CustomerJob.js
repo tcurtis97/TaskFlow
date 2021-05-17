@@ -4,27 +4,30 @@ import { JobContext } from "../../providers/JobProvider";
 import { useHistory } from "react-router-dom";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import "./Customer.css";
+import moment from "moment";
 
 const CustomerJob = ({ job }) => {
-  const { deleteJob } = useContext(JobContext);
-
-  const JobDelete = () => {
-    deleteJob(job.id);
-  };
-
   return (
     <Card className="m-4">
       <CardHeader>
         <strong>{job.description}</strong>
       </CardHeader>
       <CardBody>
-        <CardText>{job.createDate}</CardText>
-        <Link to={`/Job/edit/${job.id}`}>
-          <Button type="button">Edit</Button>
-        </Link>
-        <Button variant="secondary" onClick={JobDelete} className="btn-primary">
-          Delete
-        </Button>
+        <CardText>{moment(job.createDate).format("MMMM Do YYYY")}</CardText>
+        <div className="buttons">
+          <Link to={`/Job/edit/${job.id}`}>
+            <Button type="button" color="primary">
+              Edit
+            </Button>
+          </Link>
+
+          <Link to={`/job/${job.id}`}>
+            <Button type="button" color="primary">
+              Details
+            </Button>
+          </Link>
+        </div>
       </CardBody>
     </Card>
   );

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { WorkRecordContext } from "../../providers/WorkRecordProvider";
-
+import TaskFlowLogo from "../Image/TaskFlowLogo.png";
 import { useHistory, useParams } from "react-router-dom";
 
 export const WorkRecordForm = () => {
@@ -21,7 +21,7 @@ export const WorkRecordForm = () => {
   const history = useHistory();
   const { workRecordId } = useParams();
 
-  // function to take the values of the form fields and sets those values to state
+  // function to take the values of the form fields and sets those values to state,  to run onchange
   const handleControlledInputChange = (event) => {
     const newWorkRecord = { ...workRecord };
     let selectedVal = event.target.value;
@@ -45,7 +45,7 @@ export const WorkRecordForm = () => {
           id: workRecordId,
           noteText: workRecord.noteText,
           timeOnJob: workRecord.timeOnJob,
-        }).then(() => history.push(`/workRecord`));
+        }).then(() => history.goBack(1));
       } else {
         addWorkRecord({
           noteText: workRecord.noteText,
@@ -70,66 +70,75 @@ export const WorkRecordForm = () => {
   }, []);
 
   return (
-    <Form className="workRecordForm">
-      <h2 className="workRecordForm__title">
-        {workRecordId ? "Save WorkRecord" : "Add WorkRecord"}
-      </h2>
-
-      <Button
-        variant
-        className="back_button"
-        onClick={() => {
-          history.goBack();
-        }}
-      >
-        Back
-      </Button>
-
-      <div className="form_background">
-        <fieldset>
-          <div className="form-group">
-            <Label htmlFor="noteText">WorkRecord Text:</Label>
-            <Input
-              type="text"
-              id="noteText"
-              onChange={handleControlledInputChange}
-              required
-              autoFocus
-              className="form-control"
-              value={workRecord.noteText}
-              placeholder="NoteText"
-            />
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <div className="form-group">
-            <Label htmlFor="timeOnJob">Time on job:</Label>
-            <Input
-              type="number"
-              id="timeOnJob"
-              onChange={handleControlledInputChange}
-              required
-              autoFocus
-              className="form-control"
-              value={workRecord.timeOnJob}
-              placeholder="TimeOnJob"
-            />
-          </div>
-        </fieldset>
+    <Form>
+      <div className="Logo">
+        <img
+          src={TaskFlowLogo}
+          width="200"
+          height="200"
+          alt="Logo"
+          className="logo"
+        ></img>
+      </div>
+      <div className="workRecordForm">
+        <h2 className="workRecordForm__title">
+          {workRecordId ? "Save WorkRecord" : "Add WorkRecord"}
+        </h2>
 
         <Button
-          style={{
-            color: "black",
-          }}
-          className="add_button"
-          onClick={(event) => {
-            event.preventDefault();
-            handleClickSaveWorkRecord();
+          color="primary"
+          className="back_button"
+          onClick={() => {
+            history.goBack();
           }}
         >
-          {workRecordId ? "Save WorkRecord" : "Add WorkRecord"}
+          Back
         </Button>
+
+        <div className="form_background">
+          <fieldset>
+            <div className="form-group">
+              <Label htmlFor="noteText">WorkRecord Text:</Label>
+              <Input
+                type="text"
+                id="noteText"
+                onChange={handleControlledInputChange}
+                required
+                autoFocus
+                className="form-control"
+                value={workRecord.noteText}
+                placeholder="NoteText"
+              />
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div className="form-group">
+              <Label htmlFor="timeOnJob">Time on job:</Label>
+              <Input
+                type="number"
+                id="timeOnJob"
+                onChange={handleControlledInputChange}
+                required
+                autoFocus
+                className="form-control"
+                value={workRecord.timeOnJob}
+                placeholder="TimeOnJob"
+              />
+            </div>
+          </fieldset>
+
+          <Button
+            color="primary"
+            className="add_button"
+            onClick={(event) => {
+              event.preventDefault();
+              handleClickSaveWorkRecord();
+            }}
+          >
+            {workRecordId ? "Save WorkRecord" : "Add WorkRecord"}
+          </Button>
+        </div>
       </div>
     </Form>
   );

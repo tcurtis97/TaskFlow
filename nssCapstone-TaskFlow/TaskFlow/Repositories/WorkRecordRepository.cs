@@ -138,19 +138,16 @@ namespace TaskFlow.Repositories
                 {
                     cmd.CommandText = @"
                         UPDATE WorkRecord
-                           SET UserProfileId = @UserProfileId,
-                                JobId = @JobId
-                                CreateDate = @CreateDate
-                                NoteText = @NoteText
+                           SET NoteText = @NoteText,
                                 TimeOnJob = @TimeOnJob
                          WHERE Id = @Id";
 
-                    DbUtils.AddParameter(cmd, "@UserProfileId", workRecord.UserProfileId);
-                    DbUtils.AddParameter(cmd, "@JobId", workRecord.JobId);
-                    DbUtils.AddParameter(cmd, "@CreateDate", workRecord.CreateDate);
+                   
+               
+      
                     DbUtils.AddParameter(cmd, "@NoteText", workRecord.NoteText);
                     DbUtils.AddParameter(cmd, "@TimeOnJob", workRecord.TimeOnJob);
-
+                     DbUtils.AddParameter(cmd, "@Id", workRecord.Id);
                     cmd.ExecuteNonQuery();
                 }
             }

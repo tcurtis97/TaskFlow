@@ -6,8 +6,10 @@ import { useParams, useHistory } from "react-router-dom";
 import CustomerAddress from "./CustomerAddress";
 import CustomerJob from "./CustomerJob";
 import { Link } from "react-router-dom";
-import { CardHeader } from "reactstrap";
+import { CardHeader, CardText } from "reactstrap";
 import { Button } from "reactstrap";
+import "./Customer.css";
+import TaskFlowLogo from "../Image/TaskFlowLogo.png";
 
 const CustomerDetails = () => {
   const [customer, SetCustomer] = useState({});
@@ -45,38 +47,57 @@ const CustomerDetails = () => {
   }
 
   return (
-    <div className="container">
-      <Button
-        variant
-        className="back_button"
-        onClick={() => {
-          history.goBack();
-        }}
-      >
-        Back
-      </Button>
+    <div>
+      <div className="Logo">
+        <img
+          src={TaskFlowLogo}
+          width="200"
+          height="200"
+          alt="Logo"
+          className="logo"
+        ></img>
+      </div>
+      <div className="container">
+        <Button
+          color="primary"
+          className="back_button"
+          onClick={() => {
+            history.goBack();
+          }}
+        >
+          Back
+        </Button>
 
-      <CardHeader>
-        <strong>{customer.name}</strong>
-        <strong>{customer.phoneNumber}</strong>
-      </CardHeader>
+        <CardHeader className="customerName">
+          <strong>{customer.name}</strong>
+        </CardHeader>
 
-      <CardHeader>
-        <Link to={`/address/add/${customer.id}`}>
-          <Button type="button">Add address</Button>
-        </Link>
-        <strong>Addresses:</strong>
-        {addresses.map((a) => (
-          <CustomerAddress key={a.id} address={a} />
-        ))}
-      </CardHeader>
+        <CardText className="customerPhoneNumber">
+          <strong>{customer.phoneNumber}</strong>
+        </CardText>
 
-      <CardHeader>
-        <strong>Jobs:</strong>
-        {jobs.map((j) => (
-          <CustomerJob key={j.id} job={j} />
-        ))}
-      </CardHeader>
+        <div>
+          <CardText className="JobAddons">
+            <Link to={`/address/add/${customer.id}`}>
+              <Button type="button" color="primary">
+                Add address
+              </Button>
+            </Link>
+
+            <strong>Addresses:</strong>
+            {addresses.map((a) => (
+              <CustomerAddress key={a.id} address={a} />
+            ))}
+          </CardText>
+
+          <CardText>
+            <strong>Jobs:</strong>
+            {jobs.map((j) => (
+              <CustomerJob key={j.id} job={j} />
+            ))}
+          </CardText>
+        </div>
+      </div>
     </div>
   );
 };

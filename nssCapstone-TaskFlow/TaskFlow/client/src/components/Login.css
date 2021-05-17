@@ -1,0 +1,45 @@
+.container--login {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.login {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.passwordForm {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 30em;
+  align-content: center;
+  justify-content: center;
+}
+
+.emailForm {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 30em;
+  align-content: center;
+  justify-content: center;
+}
+
+.loginElements {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.RegisterElements {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}

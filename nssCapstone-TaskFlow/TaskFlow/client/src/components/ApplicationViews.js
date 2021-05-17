@@ -14,7 +14,7 @@ import JobDetail from "./Job/JobDetail";
 import { AddressForm } from "./Address/AddressForm";
 
 import { NoteForm } from "./Note/NoteForm";
-import NoteEdit from "./Note/NoteEdit";
+
 import { WorkRecordForm } from "./WorkRecord/WorkRecordForm";
 import UserProfileDetail from "./UserProfile/UserProfileDetail";
 import { JobEdit } from "./Job/JobEdit";

@@ -4,6 +4,8 @@ import { NoteContext } from "../../providers/NoteProvider";
 import { useHistory } from "react-router-dom";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import moment from "moment";
+import "./Job.css";
 
 const JobNote = ({ note }) => {
   const { deleteNote } = useContext(NoteContext);
@@ -22,16 +24,12 @@ const JobNote = ({ note }) => {
           <strong>{note.noteText}</strong>
         </CardText>
         <CardText>
-          <strong>{note.createDate}</strong>
+          <strong>{moment(note.createDate).format("MMMM Do YYYY")}</strong>
         </CardText>
         <Link to={`/note/edit/${note.id}`}>
           <Button type="button">Edit</Button>
         </Link>
-        <Button
-          variant="secondary"
-          onClick={NoteDelete}
-          className="btn-primary"
-        >
+        <Button color="primary" onClick={NoteDelete} className="btn-primary">
           Delete
         </Button>
       </CardBody>

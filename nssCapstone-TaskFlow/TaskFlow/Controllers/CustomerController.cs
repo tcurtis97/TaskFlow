@@ -25,6 +25,7 @@ namespace TaskFlow.Controllers
             [HttpGet]
             public IActionResult Get()
             {
+                
                 return Ok(_customerRepository.GetAll());
             }
 

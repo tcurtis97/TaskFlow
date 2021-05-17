@@ -4,6 +4,7 @@ import { JobContext } from "../../providers/JobProvider";
 import { CustomerContext } from "../../providers/CustomerProvider";
 import { AddressContext } from "../../providers/AddressProvider";
 import { useHistory, useParams } from "react-router-dom";
+import "./Job.css";
 
 export const JobEdit = () => {
   const { addJob, getJobById, updateJob, getAllJobs } = useContext(JobContext);
@@ -50,6 +51,7 @@ export const JobEdit = () => {
       window.alert("Please enter a Descritpion");
     } else {
       updateJob({
+        id: jobId,
         description: job.description,
         customerId: job.customerId,
         addressId: job.addressId,
@@ -80,7 +82,7 @@ export const JobEdit = () => {
       <h2 className="customerForm__title">Save Job</h2>
 
       <Button
-        variant
+        color="primary"
         className="back_button"
         onClick={() => {
           history.goBack();
@@ -153,16 +155,14 @@ export const JobEdit = () => {
         )}
 
         <Button
-          style={{
-            color: "black",
-          }}
+          color="primary"
           className="add_button"
           onClick={(event) => {
             event.preventDefault();
             handleClickSaveJob();
           }}
         >
-          Add Job
+          Save Job
         </Button>
       </div>
     </Form>

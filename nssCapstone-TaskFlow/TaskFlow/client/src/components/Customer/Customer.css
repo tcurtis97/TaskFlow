@@ -1,0 +1,88 @@
+.container {
+  display: flex;
+  flex-basis: 30%;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 50em;
+  background-color: #eafffd;
+}
+
+.customerCard {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 30%;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 15px;
+  box-sizing: border-box;
+  margin: 0.5em;
+  background-color: #c9f0ff;
+}
+
+.customerPhoneNumber {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.customerName {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+}
+
+.customerName {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+}
+.search:hover,
+.search:focus {
+  border: 1.5px solid #009688;
+  background-color: white;
+}
+
+.searchDiv {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+}
+
+.Logo {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 50em;
+  margin-right: 50em;
+  justify-content: center;
+}
+
+.customerForm {
+  display: flex;
+  flex-basis: 20%;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background-color: #c9f0ff;
+}
+
+.addressForm {
+  display: flex;
+  flex-basis: 20%;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background-color: #c9f0ff;
+}
+
+.back_button {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 65em;
+  justify-content: center;
+}
