@@ -47,8 +47,8 @@ export const JobEdit = () => {
   }, [job]);
 
   const handleClickSaveJob = () => {
-    if (job.description === "" || job.customerId === 0 || job.addressId === 0) {
-      window.alert("Please enter a Descritpion");
+    if (job.description === "") {
+      window.alert("Please enter a description");
     } else {
       updateJob({
         id: jobId,

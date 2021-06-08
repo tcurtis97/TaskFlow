@@ -107,6 +107,12 @@ namespace TaskFlow.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
+                    cmd.CommandText = "DELETE FROM Address WHERE CustomerId = @Id";
+                    DbUtils.AddParameter(cmd, "@id", customerId);
+                    cmd.ExecuteNonQuery();
+                }
+                using (var cmd = conn.CreateCommand())
+                {
                     cmd.CommandText = "DELETE FROM Customer WHERE Id = @Id";
                     DbUtils.AddParameter(cmd, "@id", customerId);
                     cmd.ExecuteNonQuery();

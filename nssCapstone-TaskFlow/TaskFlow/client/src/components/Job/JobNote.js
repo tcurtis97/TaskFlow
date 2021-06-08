@@ -26,12 +26,16 @@ const JobNote = ({ note }) => {
         <CardText>
           <strong>{moment(note.createDate).format("MMMM Do YYYY")}</strong>
         </CardText>
-        <Link to={`/note/edit/${note.id}`}>
-          <Button type="button">Edit</Button>
-        </Link>
-        <Button color="primary" onClick={NoteDelete} className="btn-primary">
-          Delete
-        </Button>
+        <div className="buttons">
+          <Link to={`/note/edit/${note.id}`}>
+            <Button type="button" color="primary">
+              Edit
+            </Button>
+          </Link>
+          <Button color="primary" onClick={NoteDelete} className="btn-primary">
+            Delete
+          </Button>
+        </div>
       </CardBody>
     </Card>
   );

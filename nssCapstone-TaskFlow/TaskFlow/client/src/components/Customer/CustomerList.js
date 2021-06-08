@@ -26,7 +26,7 @@ const CustomerList = () => {
     <section className="container">
       <Link to="/customer/add" className="nav-link">
         <Button type="button" color="primary">
-          Add Job
+          Add Customer
         </Button>
       </Link>
       {customers.map((c) => (

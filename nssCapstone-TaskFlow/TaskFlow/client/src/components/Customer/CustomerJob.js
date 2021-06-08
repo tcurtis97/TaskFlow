@@ -14,7 +14,9 @@ const CustomerJob = ({ job }) => {
         <strong>{job.description}</strong>
       </CardHeader>
       <CardBody>
-        <CardText>{moment(job.createDate).format("MMMM Do YYYY")}</CardText>
+        <CardText>
+          Job added on: {moment(job.createDate).format("MMMM Do YYYY")}
+        </CardText>
         <div className="buttons">
           <Link to={`/Job/edit/${job.id}`}>
             <Button type="button" color="primary">
