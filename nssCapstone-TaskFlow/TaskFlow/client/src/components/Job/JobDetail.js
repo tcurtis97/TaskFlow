@@ -25,6 +25,7 @@ const JobDetails = () => {
   const { GetAllNotesByJobId } = useContext(NoteContext);
   const { GetAllWorkRecordsByJobId } = useContext(WorkRecordContext);
 
+  // id of the job being passed through the variable id through usParam
   const { id } = useParams();
 
   const jobDelete = () => {
@@ -53,10 +54,6 @@ const JobDetails = () => {
   const JobComplete = () => {
     CompleteJob(job.id).then(history.push(`/job`));
   };
-
-  if (!job) {
-    return null;
-  }
 
   return (
     <div>
@@ -99,6 +96,8 @@ const JobDetails = () => {
           <strong>Description: {job.description}</strong>
         </CardText>
 
+        {/* if the completionDate is null which is coming back as an empty string, show "Job is Uncomplete",
+else show the job was complete and the date it was completed */}
         {job.completionDate !== "1900-01-01T00:00:00" ? (
           <p>
             <strong>
