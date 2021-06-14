@@ -11,7 +11,9 @@ namespace TaskFlow.Models
 
         public int UserProfileId { get; set; }
 
-        public int Description { get; set; }
+        public int ServiceId { get; set; }
+
+        public string Description { get; set; }
 
         public string ImageUrl { get; set; }
 
