@@ -1,13 +1,17 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using TaskFlow.Models;
 using TaskFlow.Repositories;
 
 namespace TaskFlow.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class FleetController : ControllerBase
@@ -41,7 +45,7 @@ namespace TaskFlow.Controllers
         [HttpPost]
         public IActionResult Post(Fleet fleet)
         {
-            fleet.CreateDate = DateTime.Now;
+            
 
             _fleetRepository.Add(fleet);
             return CreatedAtAction(nameof(Get), new { id = fleet.Id }, fleet);
@@ -66,63 +70,7 @@ namespace TaskFlow.Controllers
             return NoContent();
         }
 
-        [HttpGet("GetFleetByIdWithDetails{id}")]
-        public IActionResult GetFleetByIdWithDetails(int id)
-        {
-            var fleet = _fleetRepository.GetFleetByIdWithDetails(id);
-            if (fleet == null)
-            {
-                return NotFound();
-            }
-            return Ok(fleet);
-        }
-
-        [HttpGet("GetAllFleetsByCustomerId{id}")]
-        public IActionResult GetAllFleetsByCustomerId(int id)
-        {
-            var fleet = _fleetRepository.GetAllFleetsByCustomerId(id);
-            if (fleet == null)
-            {
-                return NotFound();
-            }
-            return Ok(fleet);
-        }
-
-
-        [HttpGet("GetFleetsByWorkDayUser")]
-        public IActionResult GetFleetsByWorkDayUser()
-        {
-            var currentUserProfile = GetCurrentUserProfile();
-            int userId = currentUserProfile.Id;
-            var fleet = _fleetRepository.GetFleetsByWorkDayUser(userId);
-            if (fleet == null)
-            {
-                return NotFound();
-            }
-            return Ok(fleet);
-        }
-
-
-
-        [HttpPut("ComepleteFleet{id}")]
-        public IActionResult ComepleteFleet(int id, DateTime complete)
-        {
-            complete = DateTime.Now;
-
-            {
-                _fleetRepository.ComepleteFleet(id, complete);
-                return NoContent();
-            }
-
-        }
-
-        [HttpGet("GetAllUncompleteFleets")]
-        public IActionResult GetAllUncompleteFleets()
-        {
-            return Ok(_fleetRepository.GetAllUncompleteFleets());
-        }
-
-
+       
         private UserProfile GetCurrentUserProfile()
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
