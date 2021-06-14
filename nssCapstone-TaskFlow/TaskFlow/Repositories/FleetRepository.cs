@@ -122,7 +122,7 @@ namespace TaskFlow.Repositories
             }
         }
 
-        public void Update(Fleet address)
+        public void Update(Fleet fleet)
         {
             using (var conn = Connection)
             {
@@ -132,12 +132,15 @@ namespace TaskFlow.Repositories
                     cmd.CommandText = @"
                         UPDATE Fleet
                            SET 
-                                Fleet = @Fleet
+                                Description = @Description,
+                                ImageUrl = @ImageUrl
+                               
                          WHERE Id = @Id";
 
 
-                    DbUtils.AddParameter(cmd, "@Fleet", address.Fleet);
-                    DbUtils.AddParameter(cmd, "@Id", address.Id);
+                    DbUtils.AddParameter(cmd, "@Description", fleet.Description);
+                    DbUtils.AddParameter(cmd, "@ImageUrl", fleet.ImageUrl);
+                    DbUtils.AddParameter(cmd, "@Id", fleet.Id);
 
                     cmd.ExecuteNonQuery();
                 }
