@@ -38,6 +38,7 @@ namespace TaskFlow
             services.AddTransient<IAddressRepository, AddressRepository>();
             services.AddTransient<IWorkRecordRepository, WorkRecordRepository>();
             services.AddTransient<IWorkDayRepository, WorkDayRepository>();
+            services.AddTransient<IFleetRepository, FleetRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
