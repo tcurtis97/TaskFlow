@@ -11,6 +11,7 @@ import { AddressProvider } from "./providers/AddressProvider";
 import { NoteProvider } from "./providers/NoteProvider";
 import { WorkRecordProvider } from "./providers/WorkRecordProvider";
 import { WorkDayProvider } from "./providers/WorkDayProvider";
+import { FleetProvider } from "./providers/FleetProvider";
 
 function App() {
   return (
@@ -21,10 +22,12 @@ function App() {
             <WorkRecordProvider>
               <CustomerProvider>
                 <AddressProvider>
-                  <WorkDayProvider>
-                    <Header />
-                    <ApplicationViews />
-                  </WorkDayProvider>
+                  <FleetProvider>
+                    <WorkDayProvider>
+                      <Header />
+                      <ApplicationViews />
+                    </WorkDayProvider>
+                  </FleetProvider>
                 </AddressProvider>
               </CustomerProvider>
             </WorkRecordProvider>
